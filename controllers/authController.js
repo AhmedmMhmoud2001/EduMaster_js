@@ -52,3 +52,19 @@ exports.loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid email or password");
   }
 });
+
+// Sign Out (GET version)
+exports.signOut = async (req, res) => {
+  try {
+    // لو بتستخدم كوكيز
+    res.clearCookie("token");
+
+    return res.status(200).json({
+      success: true,
+      message: "✅ Signed out successfully"
+    });
+  } catch (error) {
+    console.error("❌ SignOut Error:", error.message);
+    res.status(500).json({ success: false, message: "Server error during sign out" });
+  }
+};

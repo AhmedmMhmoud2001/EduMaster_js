@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const { errorHandler } = require("./middleware/errorMiddleware");
+const userRoutes = require("./routes/userRoutes");
+
 
 require("dotenv").config();
 
@@ -17,12 +19,13 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/api/auth", authRoutes);
-
+app.use("/api/users", userRoutes);
 app.get("/", (req, res) => {
   res.send("EduMaster Backend is running...");
 });
 
 // Error Handler
 app.use(errorHandler);
+
 
 module.exports = app;

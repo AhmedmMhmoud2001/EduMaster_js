@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
     stage: { type: String },
     semester: { type: String },
     subject: { type: String },
-    role: { type: String, enum: ["student", "teacher"], default: "student" }
+    role: { type: String, enum: ["student", "teacher","admin"], default: "student" }
   },
   { timestamps: true }
 );
